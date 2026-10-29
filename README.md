@@ -12,12 +12,18 @@ Free and open source, from [tein](https://tein.ai): one cheap API, MCP and workf
 
 ## Watch
 
-<p align="center"><a href="https://sirioberati.github.io/showhow/"><img src="docs/watch.png" alt="Watch the full examples with sound" width="100%"></a></p>
+Two full reels, with voice and music, made with the same engine and checks. Click one to watch it with sound.
 
-Two full reels, with voice and music, made with the same engine and checks:
-
-- **[How a wing really makes lift →](https://sirioberati.github.io/showhow/#airplanes)** · 65 s. A Boeing 737 drawn in code, every part on its word.
-- **[What if the Earth were flat? →](https://sirioberati.github.io/showhow/#world)** · 58 s. On a disc of rock, gravity pulls toward the pole.
+<table>
+<tr>
+<td align="center" width="50%"><a href="https://sirioberati.github.io/showhow/#airplanes"><img src="docs/airplanes.gif" alt="How a wing really makes lift" width="300"></a><br><b>How a wing really makes lift</b> · 65 s · <a href="https://sirioberati.github.io/showhow/#airplanes">watch ▶</a></td>
+<td align="center" width="50%"><a href="https://sirioberati.github.io/showhow/#world"><img src="docs/world.gif" alt="What if the Earth were flat?" width="300"></a><br><b>What if the Earth were flat?</b> · 58 s · <a href="https://sirioberati.github.io/showhow/#world">watch ▶</a></td>
+</tr>
+<tr>
+<td valign="top">The myth, the Cambridge smoke test, pressure, speed and flaps. A Boeing 737 drawn in code, every part on its word.</td>
+<td valign="top">On a disc built from Earth's own rock, gravity pulls toward the pole: balls roll, oceans pool, and the walk to the edge is all uphill.</td>
+</tr>
+</table>
 
 ## The demos
 
