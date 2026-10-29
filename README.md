@@ -10,15 +10,25 @@ Free and open source, from [tein](https://tein.ai): one cheap API, MCP and workf
 
 <p><a href="https://tein.ai/waitlist"><img src="docs/join-tein.png" alt="Join tein" height="52"></a></p>
 
+## Watch
+
+<p align="center"><a href="https://sirioberati.github.io/showhow/"><img src="docs/watch.png" alt="Watch the full examples with sound" width="100%"></a></p>
+
+Two full reels, with voice and music, made with the same engine and checks:
+
+- **[How a wing really makes lift →](https://sirioberati.github.io/showhow/#airplanes)** · 65 s. A Boeing 737 drawn in code, every part on its word.
+- **[What if the Earth were flat? →](https://sirioberati.github.io/showhow/#world)** · 58 s. On a disc of rock, gravity pulls toward the pole.
+
 ## The demos
 
 Three reels ship in this repo, voiced and timed, so each one renders with no key. Every one passes every check below.
+Click one to watch it with sound.
 
 <table>
 <tr>
-<td align="center" width="33%"><img src="docs/demo.gif" alt="A block falls and the camera circles it" width="240"><br><b>demo</b> · 8 s</td>
-<td align="center" width="33%"><img src="docs/pendulum.gif" alt="Three pendulums keep time" width="240"><br><b>pendulum</b> · 12 s</td>
-<td align="center" width="33%"><img src="docs/gears.gif" alt="A small gear turns a big one" width="240"><br><b>gears</b> · 14 s</td>
+<td align="center" width="33%"><a href="https://sirioberati.github.io/showhow/#demo"><img src="docs/demo.gif" alt="A block falls and the camera circles it" width="240"></a><br><b>demo</b> · 8 s · <a href="https://sirioberati.github.io/showhow/#demo">watch ▶</a></td>
+<td align="center" width="33%"><a href="https://sirioberati.github.io/showhow/#pendulum"><img src="docs/pendulum.gif" alt="Three pendulums keep time" width="240"></a><br><b>pendulum</b> · 12 s · <a href="https://sirioberati.github.io/showhow/#pendulum">watch ▶</a></td>
+<td align="center" width="33%"><a href="https://sirioberati.github.io/showhow/#gears"><img src="docs/gears.gif" alt="A small gear turns a big one" width="240"></a><br><b>gears</b> · 14 s · <a href="https://sirioberati.github.io/showhow/#gears">watch ▶</a></td>
 </tr>
 <tr>
 <td valign="top">A block falls under real gravity, lands on its word, and the camera circles it. The smallest possible reel.</td>
@@ -27,7 +37,7 @@ Three reels ship in this repo, voiced and timed, so each one renders with no key
 </tr>
 </table>
 
-The GIFs are silent. The reels have their voice: Matilda, an ElevenLabs stock voice.
+The demo voices are Matilda, an ElevenLabs stock voice.
 
 ## How it works
 

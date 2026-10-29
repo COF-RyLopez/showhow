@@ -16,3 +16,4 @@ __pycache__/
 engine/reels/*/joins-sheet.jpg
 .readme-src/
 .readme-preview.html
+!docs/videos/*.mp4
