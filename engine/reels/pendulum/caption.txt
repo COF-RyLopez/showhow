@@ -1,0 +1,12 @@
+# Pendulums: two the same length swing together, big swing or small; one a quarter as long swings twice as fast.
+== hook | ground: dark
+A *pendulum* takes
+almost the *same* time
+for a *big* swing
+as for a *small* one.
+== length | ground: dark
+That's why *clocks*
+used them to keep time.
+Only the *length* / sets the beat:
+a string a *quarter* as long
+swings *twice* as fast.

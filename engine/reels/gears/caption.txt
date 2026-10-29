@@ -1,0 +1,16 @@
+# Gears: 10 teeth drive 30, a third of a turn per turn, the other way, three times the force.
+== hook | ground: dark
+A small gear / with *ten* teeth
+can turn a big one
+with *thirty.*
+== ratio | ground: dark
+Each full *turn*
+of the small gear
+moves the big gear
+only a *third* of a turn,
+the other *way.*
+== force | ground: dark
+It trades *speed*
+for turning *force,*
+so the big gear pushes
+*three* times as hard.

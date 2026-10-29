@@ -1,0 +1,34 @@
+{
+  "name": "showhow",
+  "version": "0.1.0",
+  "description": "Showhow by Sirio, free version: narrated, fully animated explainer reels drawn in code, with checks that pass or fail every render.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "bin": {
+    "showhow-mcp": "mcp/server.mjs"
+  },
+  "scripts": {
+    "render": "cd engine && node render.mjs",
+    "draft": "cd engine && node draft.mjs",
+    "typecheck": "tsc --noEmit -p engine",
+    "mcp": "node mcp/server.mjs",
+    "test": "node mcp/test.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.522",
+    "@remotion/cli": "4.0.522",
+    "@remotion/google-fonts": "4.0.522",
+    "@remotion/layout-utils": "4.0.522",
+    "@remotion/renderer": "4.0.522",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.522"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "typescript": "5.9.3"
+  }
+}

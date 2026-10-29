@@ -1,0 +1,420 @@
+{
+ "duration": 12.273,
+ "silences": [
+  [
+   2.75,
+   2.87
+  ],
+  [
+   3.76,
+   4.17
+  ],
+  [
+   6.27,
+   6.57
+  ],
+  [
+   7.97,
+   8.28
+  ],
+  [
+   9.24,
+   9.44
+  ],
+  [
+   11.27,
+   12.27
+  ]
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "ground": "dark",
+   "firstWord": 0
+  },
+  {
+   "id": "length",
+   "ground": "dark",
+   "firstWord": 16
+  }
+ ],
+ "blocks": [
+  {
+   "words": [
+    0,
+    1,
+    2
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    16,
+    17,
+    18
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    19,
+    20,
+    21,
+    22,
+    23
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+   ],
+   "slot": "top",
+   "scene": 1,
+   "br": 27
+  },
+  {
+   "words": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    36,
+    37,
+    38,
+    39
+   ],
+   "slot": "top",
+   "scene": 1
+  }
+ ],
+ "words": [
+  {
+   "w": "A",
+   "key": false,
+   "emoji": null,
+   "t": 0.0,
+   "e": 0.081
+  },
+  {
+   "w": "pendulum",
+   "key": true,
+   "emoji": null,
+   "t": 0.151,
+   "e": 0.557
+  },
+  {
+   "w": "takes",
+   "key": false,
+   "emoji": null,
+   "t": 0.615,
+   "e": 0.871
+  },
+  {
+   "w": "almost",
+   "key": false,
+   "emoji": null,
+   "t": 0.929,
+   "e": 1.254
+  },
+  {
+   "w": "the",
+   "key": false,
+   "emoji": null,
+   "t": 1.289,
+   "e": 1.358
+  },
+  {
+   "w": "same",
+   "key": true,
+   "emoji": null,
+   "t": 1.405,
+   "e": 1.625
+  },
+  {
+   "w": "time",
+   "key": false,
+   "emoji": null,
+   "t": 1.66,
+   "e": 1.927
+  },
+  {
+   "w": "for",
+   "key": false,
+   "emoji": null,
+   "t": 1.962,
+   "e": 2.067
+  },
+  {
+   "w": "a",
+   "key": false,
+   "emoji": null,
+   "t": 2.113,
+   "e": 2.136
+  },
+  {
+   "w": "big",
+   "key": true,
+   "emoji": null,
+   "t": 2.183,
+   "e": 2.334
+  },
+  {
+   "w": "swing",
+   "key": false,
+   "emoji": null,
+   "t": 2.38,
+   "e": 2.694
+  },
+  {
+   "w": "as",
+   "key": false,
+   "emoji": null,
+   "t": 2.81,
+   "e": 2.961
+  },
+  {
+   "w": "for",
+   "key": false,
+   "emoji": null,
+   "t": 3.019,
+   "e": 3.135
+  },
+  {
+   "w": "a",
+   "key": false,
+   "emoji": null,
+   "t": 3.181,
+   "e": 3.204
+  },
+  {
+   "w": "small",
+   "key": true,
+   "emoji": null,
+   "t": 3.262,
+   "e": 3.518
+  },
+  {
+   "w": "one.",
+   "key": false,
+   "emoji": null,
+   "t": 3.587,
+   "e": 3.959
+  },
+  {
+   "w": "That's",
+   "key": false,
+   "emoji": null,
+   "t": 4.1122,
+   "e": 4.3672
+  },
+  {
+   "w": "why",
+   "key": false,
+   "emoji": null,
+   "t": 4.3902,
+   "e": 4.5302
+  },
+  {
+   "w": "clocks",
+   "key": true,
+   "emoji": null,
+   "t": 4.5992,
+   "e": 4.9482
+  },
+  {
+   "w": "used",
+   "key": false,
+   "emoji": null,
+   "t": 5.0292,
+   "e": 5.2612
+  },
+  {
+   "w": "them",
+   "key": false,
+   "emoji": null,
+   "t": 5.2962,
+   "e": 5.4472
+  },
+  {
+   "w": "to",
+   "key": false,
+   "emoji": null,
+   "t": 5.5172,
+   "e": 5.5752
+  },
+  {
+   "w": "keep",
+   "key": false,
+   "emoji": null,
+   "t": 5.6332,
+   "e": 5.8192
+  },
+  {
+   "w": "time.",
+   "key": false,
+   "emoji": null,
+   "t": 5.8772,
+   "e": 6.3642
+  },
+  {
+   "w": "Only",
+   "key": false,
+   "emoji": null,
+   "t": 6.5444,
+   "e": 6.7994
+  },
+  {
+   "w": "the",
+   "key": false,
+   "emoji": null,
+   "t": 6.8464,
+   "e": 6.9164
+  },
+  {
+   "w": "length",
+   "key": true,
+   "emoji": null,
+   "t": 6.9744,
+   "e": 7.2414
+  },
+  {
+   "w": "sets",
+   "key": false,
+   "emoji": null,
+   "t": 7.2994,
+   "e": 7.5194
+  },
+  {
+   "w": "the",
+   "key": false,
+   "emoji": null,
+   "t": 7.5774,
+   "e": 7.6474
+  },
+  {
+   "w": "beat:",
+   "key": false,
+   "emoji": null,
+   "t": 7.6934,
+   "e": 8.1114
+  },
+  {
+   "w": "a",
+   "key": false,
+   "emoji": null,
+   "t": 8.2629,
+   "e": 8.3219
+  },
+  {
+   "w": "string",
+   "key": false,
+   "emoji": null,
+   "t": 8.4139,
+   "e": 8.7389
+  },
+  {
+   "w": "a",
+   "key": false,
+   "emoji": null,
+   "t": 8.7859,
+   "e": 8.8089
+  },
+  {
+   "w": "quarter",
+   "key": true,
+   "emoji": null,
+   "t": 8.8669,
+   "e": 9.2159
+  },
+  {
+   "w": "as",
+   "key": false,
+   "emoji": null,
+   "t": 9.3899,
+   "e": 9.5519
+  },
+  {
+   "w": "long",
+   "key": false,
+   "emoji": null,
+   "t": 9.6329,
+   "e": 9.8539
+  },
+  {
+   "w": "swings",
+   "key": false,
+   "emoji": null,
+   "t": 9.9119,
+   "e": 10.2719
+  },
+  {
+   "w": "twice",
+   "key": true,
+   "emoji": null,
+   "t": 10.3419,
+   "e": 10.6779
+  },
+  {
+   "w": "as",
+   "key": false,
+   "emoji": null,
+   "t": 10.7129,
+   "e": 10.7829
+  },
+  {
+   "w": "fast.",
+   "key": false,
+   "emoji": null,
+   "t": 10.8409,
+   "e": 11.5719
+  }
+ ]
+}

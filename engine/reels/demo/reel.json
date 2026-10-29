@@ -1,0 +1,4 @@
+{
+  "voice": {"id": "XrExE9yKIg1WjnnlVkGX", "name": "Matilda (ElevenLabs stock voice)", "model": "eleven_multilingual_v2", "speed": 1.0, "stability": 0.5, "similarity": 0.8, "style": 0.0},
+  "theme": { "motion": "measured", "handover": "continuous" }
+}

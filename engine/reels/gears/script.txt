@@ -1,0 +1,5 @@
+A small gear with ten teeth can turn a big one with thirty.
+
+Each full turn of the small gear moves the big gear only a third of a turn, the other way.
+
+It trades speed for turning force, so the big gear pushes three times as hard.

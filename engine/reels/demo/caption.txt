@@ -1,0 +1,9 @@
+# The demo reel: one block, one camera, two scenes in one continuous world.
+== hook | ground: dark
+This *block*
+is drawn with *code,*
+one *frame* at a time.
+== orbit | ground: dark
+The *camera* / circles it,
+and every *move*
+lands on a spoken *word.*
