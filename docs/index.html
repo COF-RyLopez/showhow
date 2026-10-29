@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>showhow · examples</title>
+<meta name="description" content="Explainer reels drawn in code. Every move lands on a spoken word, and every render is checked before it ships. Free and open source, from tein.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Hanken+Grotesk:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root { --page: #F7F7F9; --card: #FFFFFF; --hair: #ECECEF; --ink: #2B2F3A; --strong: #16181F; --dim: #7A7E8A; --whisper: #9AA0AC; --signal: #1F18C0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 400 17px/1.6 'Hanken Grotesk', system-ui, sans-serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 56px max(20px, env(safe-area-inset-left)) 72px; }
+  .whisper { font: 500 12px 'IBM Plex Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; color: var(--whisper); }
+  h1 { font: 700 clamp(48px, 9vw, 84px)/1 'Space Grotesk', sans-serif; letter-spacing: -0.04em; color: var(--strong); margin: 14px 0 16px; }
+  .lead { max-width: 600px; font-size: 20px; margin: 0 0 24px; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border-radius: 8px; text-decoration: none;
+    font: 700 17px 'Space Grotesk', sans-serif; letter-spacing: -0.03em; }
+  .btn.dark { background: var(--strong); color: #fff; }
+  .btn.light { background: var(--card); color: var(--strong); border: 1px solid var(--hair); }
+  .btn span { font: 500 15px 'IBM Plex Mono', monospace; color: var(--whisper); }
+  h2 { font: 700 30px 'Space Grotesk', sans-serif; letter-spacing: -0.04em; color: var(--strong); margin: 64px 0 6px; }
+  .sub { color: var(--dim); margin: 0 0 22px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--hair); border-radius: 10px; padding: 12px; box-shadow: 0 8px 22px rgba(22,24,31,0.05); scroll-margin-top: 24px; }
+  .card video { width: 100%; aspect-ratio: 9 / 16; border-radius: 6px; background: #111214; display: block; }
+  .card h3 { font: 700 20px 'Space Grotesk', sans-serif; letter-spacing: -0.03em; color: var(--strong); margin: 12px 4px 2px; }
+  .card .meta { font: 500 11px 'IBM Plex Mono', monospace; letter-spacing: 0.16em; text-transform: uppercase; color: var(--whisper); margin: 0 4px 6px; }
+  .card p { margin: 0 4px 6px; font-size: 15px; }
+  footer { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--hair); display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; color: var(--dim); font-size: 14px; }
+  .tein { display: inline-flex; align-items: center; gap: 8px; font: 700 18px 'Space Grotesk', sans-serif; letter-spacing: -0.04em; color: var(--strong); text-decoration: none; }
+  a { color: var(--strong); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="whisper">Free version · Open source · MIT</div>
+  <h1>showhow</h1>
+  <p class="lead">Explainer reels drawn in code. Every move lands on a spoken word, and every render is checked before it ships. Turn the sound on.</p>
+  <div class="row">
+    <a class="btn dark" href="https://github.com/sirioberati/showhow">Get the code <span>→</span></a>
+    <a class="btn light" href="https://tein.ai/waitlist"><svg width="20" height="20" viewBox="0 0 15 15" class="mark"></svg>Join tein <span>→</span></a>
+  </div>
+
+  <h2>Full examples</h2>
+  <p class="sub">Complete reels, made with the same engine and checks, with voice and music.</p>
+  <div class="grid">
+    <div class="card" id="airplanes">
+      <video src="videos/airplanes.mp4" poster="videos/airplanes.jpg" controls playsinline preload="metadata"></video>
+      <h3>How a wing really makes lift</h3><div class="meta">airplanes · 65 s</div>
+      <p>The myth, the Cambridge smoke test, pressure, speed and flaps. A Boeing 737 drawn in code, every part on its word.</p>
+    </div>
+    <div class="card" id="world">
+      <video src="videos/world.mp4" poster="videos/world.jpg" controls playsinline preload="metadata"></video>
+      <h3>What if the Earth were flat?</h3><div class="meta">world · 58 s</div>
+      <p>On a disc built from Earth's own rock, gravity pulls toward the pole: balls roll, oceans pool, and the walk to the edge is all uphill.</p>
+    </div>
+  </div>
+
+  <h2>The demos in the repo</h2>
+  <p class="sub">Each one ships with its voice and timing, and renders with no key.</p>
+  <div class="grid">
+    <div class="card" id="demo">
+      <video src="videos/demo.mp4" poster="videos/demo.jpg" controls playsinline preload="metadata"></video>
+      <h3>demo</h3><div class="meta">8 s</div>
+      <p>A block falls under real gravity, lands on its word, and the camera circles it.</p>
+    </div>
+    <div class="card" id="pendulum">
+      <video src="videos/pendulum.mp4" poster="videos/pendulum.jpg" controls playsinline preload="metadata"></video>
+      <h3>pendulum</h3><div class="meta">12 s</div>
+      <p>Big and small swings keep the same time. A string a quarter as long swings twice as fast.</p>
+    </div>
+    <div class="card" id="gears">
+      <video src="videos/gears.mp4" poster="videos/gears.jpg" controls playsinline preload="metadata"></video>
+      <h3>gears</h3><div class="meta">14 s</div>
+      <p>10 teeth turn 30 a third of a turn, the other way, with three times the force.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>MIT license · <a href="https://github.com/sirioberati/showhow">github.com/sirioberati/showhow</a></span>
+    <a class="tein" href="https://tein.ai"><svg width="20" height="20" viewBox="0 0 15 15" class="mark"></svg>tein</a>
+  </footer>
+</div>
+<script>
+  // The Tein mark, to its spec: nine blocks on a 5.5 pitch, fixed opacities, one Signal block.
+  const BLOCKS = [[0.5, 1, "S"], [0.28, 0.85, 0.3], [0.18, 0.45, 0.22]];
+  const FRAGS = { "2,0": [1, 1], "1,2": [1.2, 2.2], "0,2": [0.8, 0.8], "2,2": [1, 1], "2,1": [2.2, 1.2] };
+  for (const svg of document.querySelectorAll(".mark")) {
+    const ink = svg.closest(".dark") ? "#FFFFFF" : "#2B2F3A";
+    let out = "";
+    BLOCKS.forEach((row, r) => row.forEach((v, c) => {
+      const x = c * 5.5, y = r * 5.5, frag = FRAGS[c + "," + r], op = v === "S" ? 1 : v;
+      out += `<rect x="${x}" y="${y}" width="4" height="4" rx="0.8" fill="${v === "S" ? "#1F18C0" : ink}" fill-opacity="${op}"/>`;
+      if (frag) out += `<rect x="${x + frag[0]}" y="${y + frag[1]}" width="1.5" height="1.5" rx="0.3" fill="${ink}" fill-opacity="${Math.min(1, op + 0.25)}"/>`;
+    }));
+    svg.innerHTML = out;
+  }
+  // Only one video plays at a time.
+  document.querySelectorAll("video").forEach((v) => v.addEventListener("play", () => {
+    document.querySelectorAll("video").forEach((o) => { if (o !== v) o.pause(); });
+  }));
+</script>
+</body>
+</html>

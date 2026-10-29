@@ -10,15 +10,31 @@ Free and open source, from [tein](https://tein.ai): one cheap API, MCP and workf
 
 <p><a href="https://tein.ai/waitlist"><img src="docs/join-tein.png" alt="Join tein" height="52"></a></p>
 
-## The demos
+## Watch
 
-Three reels ship in this repo, voiced and timed, so each one renders with no key. Every one passes every check below.
+Two full reels, with voice and music, made with the same engine and checks. Click one to watch it with sound.
 
 <table>
 <tr>
-<td align="center" width="33%"><img src="docs/demo.gif" alt="A block falls and the camera circles it" width="240"><br><b>demo</b> · 8 s</td>
-<td align="center" width="33%"><img src="docs/pendulum.gif" alt="Three pendulums keep time" width="240"><br><b>pendulum</b> · 12 s</td>
-<td align="center" width="33%"><img src="docs/gears.gif" alt="A small gear turns a big one" width="240"><br><b>gears</b> · 14 s</td>
+<td align="center" width="50%"><a href="https://sirioberati.github.io/showhow/#airplanes"><img src="docs/airplanes.gif" alt="How a wing really makes lift" width="300"></a><br><b>How a wing really makes lift</b> · 65 s · <a href="https://sirioberati.github.io/showhow/#airplanes">watch ▶</a></td>
+<td align="center" width="50%"><a href="https://sirioberati.github.io/showhow/#world"><img src="docs/world.gif" alt="What if the Earth were flat?" width="300"></a><br><b>What if the Earth were flat?</b> · 58 s · <a href="https://sirioberati.github.io/showhow/#world">watch ▶</a></td>
+</tr>
+<tr>
+<td valign="top">The myth, the Cambridge smoke test, pressure, speed and flaps. A Boeing 737 drawn in code, every part on its word.</td>
+<td valign="top">On a disc built from Earth's own rock, gravity pulls toward the pole: balls roll, oceans pool, and the walk to the edge is all uphill.</td>
+</tr>
+</table>
+
+## The demos
+
+Three reels ship in this repo, voiced and timed, so each one renders with no key. Every one passes every check below.
+Click one to watch it with sound.
+
+<table>
+<tr>
+<td align="center" width="33%"><a href="https://sirioberati.github.io/showhow/#demo"><img src="docs/demo.gif" alt="A block falls and the camera circles it" width="240"></a><br><b>demo</b> · 8 s · <a href="https://sirioberati.github.io/showhow/#demo">watch ▶</a></td>
+<td align="center" width="33%"><a href="https://sirioberati.github.io/showhow/#pendulum"><img src="docs/pendulum.gif" alt="Three pendulums keep time" width="240"></a><br><b>pendulum</b> · 12 s · <a href="https://sirioberati.github.io/showhow/#pendulum">watch ▶</a></td>
+<td align="center" width="33%"><a href="https://sirioberati.github.io/showhow/#gears"><img src="docs/gears.gif" alt="A small gear turns a big one" width="240"></a><br><b>gears</b> · 14 s · <a href="https://sirioberati.github.io/showhow/#gears">watch ▶</a></td>
 </tr>
 <tr>
 <td valign="top">A block falls under real gravity, lands on its word, and the camera circles it. The smallest possible reel.</td>
@@ -27,7 +43,7 @@ Three reels ship in this repo, voiced and timed, so each one renders with no key
 </tr>
 </table>
 
-The GIFs are silent. The reels have their voice: Matilda, an ElevenLabs stock voice.
+The demo voices are Matilda, an ElevenLabs stock voice.
 
 ## How it works
 
