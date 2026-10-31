@@ -15,6 +15,8 @@ camera. Every move starts on a word the voice says. There is no presenter and no
 2. **Voice.** `python3 scripts/voice.py <slug>` (ElevenLabs, the key in `.env.local`, the voice id in `reel.json`), then
    `python3 scripts/tighten.py <slug>`, which puts every pause inside real silence so no word is ever cut.
    To pick a voice: `python3 scripts/voice.py <slug> --audition id:label,id:label`.
+   No ElevenLabs key: `python3 scripts/kokoro.py <slug> [--voice af_heart]` (the `voice_free` tool) voices it with the
+   open Kokoro model on this machine instead; run `tighten.py` after it the same way.
 3. **Caption and timing.** Write `caption.txt` (below), run `python3 scripts/align.py <slug>`, then
    `python3 scripts/check.py plan <slug>` until it returns 0.
 4. **Plan.** `plan.md`: the one or two worlds the reel happens in, which scenes carry on in the same world, and for each
