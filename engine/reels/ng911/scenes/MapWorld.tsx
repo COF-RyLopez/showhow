@@ -150,9 +150,9 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
   g.fill();
 
   const cam: Cam = {
-    z: spline(s, [[0, 1.0], [t.built + 0.5, 1.24], [t.road - 1.1, 1.16], [t.road + 0.3, 1.8], [t.right + 0.4, 1.82], [t.boundaries + 0.2, 1.1], [t.police - 0.2, 1.05], [t.fire + 0.4, 0.8], [t.layer, 0.8], [t.coordinates - 0.1, 0.92], [t.counties - 0.5, 0.92], [t.map2 + 0.3, 1.04], [t.end, 1.06]]),
+    z: spline(s, [[0, 0.86], [t.answers + 0.3, 1.06], [t.built + 0.5, 1.24], [t.road - 1.1, 1.16], [t.road + 0.3, 1.8], [t.right + 0.4, 1.82], [t.boundaries + 0.2, 1.1], [t.police - 0.2, 1.05], [t.fire + 0.4, 0.8], [t.layer, 0.8], [t.coordinates - 0.1, 0.92], [t.counties - 0.5, 0.92], [t.map2 + 0.3, 1.04], [t.end, 1.06]]),
     cx: spline(s, [[0, 0], [t.road - 1.1, 0], [t.road + 0.3, 100], [t.right + 0.4, 100], [t.boundaries + 0.2, 0], [t.end, 0]]),
-    cy: spline(s, [[0, 60], [t.built + 0.5, -20], [t.road - 1.1, 0], [t.road + 0.3, 40], [t.right + 0.4, 40], [t.boundaries + 0.2, 0], [t.counties - 0.5, 0], [t.map2 + 0.3, 385], [t.end, 390]]),
+    cy: spline(s, [[0, 140], [t.answers + 0.3, 40], [t.built + 0.5, -20], [t.road - 1.1, 0], [t.road + 0.3, 40], [t.right + 0.4, 40], [t.boundaries + 0.2, 0], [t.counties - 0.5, 0], [t.map2 + 0.3, 385], [t.end, 390]]),
     tilt: spline(s, [[0, 0], [t.police - 1.6, 0], [t.police - 0.6, 0], [t.fire + 0.3, 1], [t.layer, 1], [t.coordinates, 0], [t.coordinates + 1, 0], [t.end, 0]]),
     lift: spline(s, [[0, 0], [t.police - 1.4, 0], [t.police - 0.4, 0], [t.fire + 0.5, 1], [t.layer, 1], [t.coordinates, 0], [t.coordinates + 1, 0], [t.end, 0]]),
   };
@@ -165,7 +165,7 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
 
   // the base sheet: roads, address points, the PSAP polygons
   county(g, s, t, ptsA, 0, false);
-  const psap = prog(s, t.boundaries - 0.2, 0.6, ease.out) * (1 - 0.6 * prog(s, t.police - 0.3, 0.6, ease.inOut));
+  const psap = prog(s, t.boundaries - 0.2, 0.6, ease.out) * (1 - 0.6 * prog(s, t.police - 0.3, 0.6, ease.inOut)) * (1 - prog(s, t.counties - 0.3, 0.9, ease.inOut));
   if (psap > 0) shade(g, PSAPS, C.psap, psap, 1, prog(s, t.answers2 - 0.2, 0.5, ease.out));
   label(g, "PSAP", -400, -380, rgba(C.psap, 1), psap * (1 - prog(s, t.police - 0.3, 0.5, ease.inOut)));
 
@@ -248,7 +248,7 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
   if (s > land - fall) {
     for (let k = 0; k < 2; k++) {
       const r = ((s - land + k * 0.7) % 1.4) / 1.4;
-      if (s > land) { g.strokeStyle = `rgba(43,126,249,${0.6 * (1 - r)})`; g.lineWidth = 4; g.beginPath(); g.arc(base.x, base.y, 16 + 60 * r, 0, 7); g.stroke(); }
+      if (s > land) { g.strokeStyle = `rgba(43,126,249,${0.8 * (1 - r)})`; g.lineWidth = 6; g.beginPath(); g.arc(base.x, base.y, 16 + 110 * r, 0, 7); g.stroke(); }
     }
     g.fillStyle = C.ink;
     g.beginPath(); g.arc(base.x, py - 52, 26, Math.PI * 0.8, Math.PI * 2.2); g.lineTo(base.x, py); g.closePath(); g.fill();
