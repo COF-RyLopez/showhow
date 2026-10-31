@@ -39,7 +39,8 @@ const XS_B = [-200, 60, 300], YS_B = [600, 860];
 const PIN: P = [100, 14];                                                       // 151 Oak St: north side of the y = 40 road
 const OAK: [P, P] = [[-20, 40], [220, 40]];                                     // the block of Oak St the reel looks at
 const PSAP_E: P = [270, -320], PSAP_W: P = [-270, -300];
-const C = { land: "#1d2a24", block: "#26362e", road: "#3a4a42", cl: "#ffd166", pt: "#f4f1e8", psap: [179, 140, 255], police: [76, 141, 255], fire: [255, 107, 91], ems: [60, 207, 145] } as const;
+// the explainer-diagram look from claude-video-2: a white dot grid, navy ink, one blue accent, cards with hairline borders
+const C = { land: "#F4F6FA", block: "#FFFFFF", line: "#E3E6ED", road: "#E4E7EE", cl: "#14213D", pt: "#5B6478", ink: "#14213D", grey: "#5B6478", accent: "#2B7EF9", psap: [43, 126, 249], police: [72, 92, 170], fire: [217, 119, 87], ems: [59, 166, 118] } as const;
 
 const poly = (g: CanvasRenderingContext2D, pts: P[]) => { g.beginPath(); pts.forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.closePath(); };
 const rgba = (c: readonly number[], a: number) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
@@ -101,6 +102,8 @@ function streets(g: CanvasRenderingContext2D, xs: number[], ys: number[], lo: nu
 
 function county(g: CanvasRenderingContext2D, s: number, t: T, pts: P[], dv: number, b: boolean) {
   const shape = b ? COUNTY_B.map(([x, y]): P => [x, y + dv]) : COUNTY;
+  // a soft shadow under the card
+  g.save(); g.fillStyle = "rgba(20,33,61,0.06)"; g.translate(0, 22); poly(g, shape); g.fill(); g.translate(0, -12); poly(g, shape); g.fill(); g.restore();
   g.save(); poly(g, shape);
   g.fillStyle = C.land; g.fill(); g.clip();
   // blocks between the streets
@@ -108,7 +111,7 @@ function county(g: CanvasRenderingContext2D, s: number, t: T, pts: P[], dv: numb
   const ex = [-460, ...xs, 460], ey = [lo, ...ys, hi];
   g.fillStyle = C.block;
   for (let i = 0; i < ex.length - 1; i++) for (let j = 0; j < ey.length - 1; j++)
-    { g.beginPath(); g.roundRect(ex[i] + 22, ey[j] + 22 + dv, ex[i + 1] - ex[i] - 44, ey[j + 1] - ey[j] - 44, 14); g.fill(); }
+    { g.beginPath(); g.roundRect(ex[i] + 22, ey[j] + 22 + dv, ex[i + 1] - ex[i] - 44, ey[j + 1] - ey[j] - 44, 14); g.fill(); g.strokeStyle = C.line; g.lineWidth = 2; g.stroke(); }
   if (!b) {   // a highway across the county
     g.strokeStyle = C.road; g.lineWidth = 40; g.beginPath(); g.moveTo(-450, -150); g.bezierCurveTo(-150, -60, 150, 260, 450, 170); g.stroke();
   }
@@ -127,22 +130,24 @@ function county(g: CanvasRenderingContext2D, s: number, t: T, pts: P[], dv: numb
     g.fillStyle = C.pt; g.beginPath(); g.arc(x, y, 7 * k, 0, 7); g.fill();
   });
   g.restore();
-  g.strokeStyle = "rgba(230,240,235,0.55)"; g.lineWidth = 4; poly(g, shape); g.stroke();
+  g.strokeStyle = "#CDD2DC"; g.lineWidth = 3; poly(g, shape); g.stroke();
 }
 
 function routeIcon(g: CanvasRenderingContext2D, [x, y]: P, on: number) {
-  g.fillStyle = on > 0.5 ? rgba(C.psap, 1) : "#4b4560"; g.beginPath(); g.arc(x, y, 38, 0, 7); g.fill();
-  g.strokeStyle = "#ffffff"; g.lineWidth = 6; g.lineCap = "round";   // a headset
+  const ink = on > 0.5 ? "#ffffff" : C.ink;
+  g.fillStyle = on > 0.5 ? C.accent : "#ffffff"; g.beginPath(); g.arc(x, y, 38, 0, 7); g.fill();
+  g.strokeStyle = on > 0.5 ? C.accent : "#CDD2DC"; g.lineWidth = 3; g.stroke();
+  g.strokeStyle = ink; g.lineWidth = 6; g.lineCap = "round";   // a headset
   g.beginPath(); g.arc(x, y + 2, 18, Math.PI * 1.1, Math.PI * 1.9); g.stroke();
-  g.fillStyle = "#ffffff"; g.beginPath(); g.roundRect(x - 22, y - 2, 9, 16, 4); g.roundRect(x + 13, y - 2, 9, 16, 4); g.fill();
+  g.fillStyle = ink; g.beginPath(); g.roundRect(x - 22, y - 2, 9, 16, 4); g.roundRect(x + 13, y - 2, 9, 16, 4); g.fill();
 }
 
 function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[], bg: string, accent: string) {
   g.setTransform(1, 0, 0, 1, 0, 0);
   g.fillStyle = bg; g.fillRect(0, 0, W, H);
-  const glow = g.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, 1100);
-  glow.addColorStop(0, "rgba(60,90,120,0.35)"); glow.addColorStop(1, "rgba(60,90,120,0)");
-  g.fillStyle = glow; g.fillRect(0, 0, W, H);
+  g.fillStyle = "rgb(226,226,232)"; g.beginPath();   // the dot grid, 38 px
+  for (let y = 19; y < H; y += 38) for (let x = 19; x < W; x += 38) { g.moveTo(x + 2.4, y); g.arc(x, y, 2.4, 0, 7); }
+  g.fill();
 
   const cam: Cam = {
     z: spline(s, [[0, 1.0], [t.built + 0.5, 1.24], [t.road - 1.1, 1.16], [t.road + 0.3, 1.8], [t.right + 0.4, 1.82], [t.boundaries + 0.2, 1.1], [t.police - 0.2, 1.05], [t.fire + 0.4, 0.8], [t.layer, 0.8], [t.coordinates - 0.1, 0.92], [t.counties - 0.5, 0.92], [t.map2 + 0.3, 1.04], [t.end, 1.06]]),
@@ -176,9 +181,9 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
   const range = (txt: string, y: number, k: number) => {
     if (k <= 0) return;
     g.save(); g.globalAlpha *= k * (1 - prog(s, t.boundaries - 0.4, 0.5, ease.inOut));
-    g.fillStyle = "rgba(12,16,20,0.92)"; g.strokeStyle = accent; g.lineWidth = 3;
+    g.fillStyle = "#ffffff"; g.strokeStyle = C.line; g.lineWidth = 3;
     g.beginPath(); g.roundRect(-60, y, 320, 48, 10); g.fill(); g.stroke();
-    g.fillStyle = "#ffffff"; g.font = "700 26px 'JetBrains Mono', monospace"; g.textAlign = "center"; g.textBaseline = "middle";
+    g.fillStyle = C.ink; g.font = "700 26px 'JetBrains Mono', monospace"; g.textAlign = "center"; g.textBaseline = "middle";
     g.fillText(txt, 100, y + 25); g.restore();
   };
   range("L 101–199 odd", -112, prog(s, t.left - 0.15, 0.4, ease.out));
@@ -204,11 +209,11 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
   const sheets: [P[][], readonly number[], number, string, number][] = [[POLICE, C.police, t.police, "POLICE", 1], [FIRE, C.fire, t.fire, "FIRE", 1], [EMS, C.ems, t.medical, "EMS", 1]];
   view(g, cam, 0); { const m = g.getTransform().transformPoint(new DOMPoint(...PIN)); pinOn.push([m.x, m.y]); }
   sheets.forEach(([regions, col, at, name, hot], i) => {
-    const a = prog(s, at - 0.15, 0.5, ease.out) * (1 - 0.6 * prog(s, t.coordinates - 0.6, 0.8, ease.inOut)) * (1 - 0.7 * prog(s, t.counties - 0.3, 0.9, ease.inOut));
+    const a = prog(s, at - 0.15, 0.5, ease.out) * (1 - 0.6 * prog(s, t.coordinates - 0.6, 0.8, ease.inOut)) * (1 - prog(s, t.counties - 0.3, 0.9, ease.inOut));
     if (a <= 0) return;
     view(g, cam, i + 1);
     g.save(); g.globalAlpha *= a;
-    poly(g, COUNTY); g.fillStyle = "rgba(14,20,24,0.35)"; g.fill();
+    poly(g, COUNTY); g.fillStyle = "rgba(255,255,255,0.82)"; g.fill(); g.strokeStyle = "#CDD2DC"; g.lineWidth = 3; g.stroke();
     shade(g, regions, col, 1, hot, prog(s, t.comes - 0.25 + i * 0.12, 0.4, ease.out));
     label(g, name, -400, -380, rgba(col, 1), 1 - prog(s, t.layer, 0.8, ease.inOut), 52);
     g.restore();
@@ -220,7 +225,7 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
   const grid = prog(s, t.coordinates - 0.3, 0.6, ease.out) * (1 - prog(s, t.counties, 0.8, ease.inOut));
   view(g, cam, 0);
   if (grid > 0) {
-    g.save(); g.globalAlpha *= grid; g.strokeStyle = "rgba(160,200,255,0.45)"; g.lineWidth = 2;
+    g.save(); g.globalAlpha *= grid; g.strokeStyle = "rgba(43,126,249,0.3)"; g.lineWidth = 2;
     for (let v = -480; v <= 480; v += 160) { g.beginPath(); g.moveTo(v, -480); g.lineTo(v, 480); g.moveTo(-480, v); g.lineTo(480, v); g.stroke(); }
     g.restore();
   }
@@ -233,9 +238,9 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
   const base = { x: pinOn[0][0], y: pinOn[0][1] };
   if (pinOn.length > 1 && cam.lift > 0.04) {
     const top = pinOn[pinOn.length - 1];
-    g.strokeStyle = "rgba(255,255,255,0.7)"; g.lineWidth = 3; g.setLineDash([8, 8]);
+    g.strokeStyle = "rgba(20,33,61,0.55)"; g.lineWidth = 3; g.setLineDash([8, 8]);
     g.beginPath(); g.moveTo(base.x, base.y); g.lineTo(top[0], top[1]); g.stroke(); g.setLineDash([]);
-    pinOn.slice(1).forEach(([x, y]) => { g.fillStyle = "#ffffff"; g.beginPath(); g.arc(x, y, 9, 0, 7); g.fill(); });
+    pinOn.slice(1).forEach(([x, y]) => { g.fillStyle = C.ink; g.beginPath(); g.arc(x, y, 9, 0, 7); g.fill(); });
   }
   // the pin: falls in on "dial", then keeps a slow ripple
   const land = t.dial + 0.35, fall = 0.42;
@@ -243,9 +248,9 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
   if (s > land - fall) {
     for (let k = 0; k < 2; k++) {
       const r = ((s - land + k * 0.7) % 1.4) / 1.4;
-      if (s > land) { g.strokeStyle = `rgba(255,77,109,${0.6 * (1 - r)})`; g.lineWidth = 4; g.beginPath(); g.arc(base.x, base.y, 16 + 60 * r, 0, 7); g.stroke(); }
+      if (s > land) { g.strokeStyle = `rgba(43,126,249,${0.6 * (1 - r)})`; g.lineWidth = 4; g.beginPath(); g.arc(base.x, base.y, 16 + 60 * r, 0, 7); g.stroke(); }
     }
-    g.fillStyle = "#ff4d6d";
+    g.fillStyle = C.ink;
     g.beginPath(); g.arc(base.x, py - 52, 26, Math.PI * 0.8, Math.PI * 2.2); g.lineTo(base.x, py); g.closePath(); g.fill();
     g.fillStyle = "#ffffff"; g.beginPath(); g.arc(base.x, py - 54, 10, 0, 7); g.fill();
   }
@@ -258,10 +263,10 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
     g.setTransform(1, 0, 0, 1, 0, 0);
     g.save(); g.globalAlpha *= idA;
     g.strokeStyle = accent; g.lineWidth = 3; g.beginPath(); g.moveTo(540, 470); g.lineTo(o.x, o.y); g.stroke();
-    g.fillStyle = "rgba(10,14,18,0.94)"; g.beginPath(); g.roundRect(70, 200, 940, 270, 22); g.fill(); g.stroke();
-    g.fillStyle = "#9fb3c8"; g.font = "700 34px Inter, sans-serif"; g.textAlign = "left"; g.textBaseline = "top";
+    g.fillStyle = C.ink; g.beginPath(); g.roundRect(70, 200, 940, 270, 22); g.fill(); g.stroke();
+    g.fillStyle = "#8A93A8"; g.font = "700 34px Inter, sans-serif"; g.textAlign = "left"; g.textBaseline = "top";
     g.fillText("NGUID · road centerline", 110, 228);
-    const lines: [string, string][] = [["urn:emergency:uid:gis:", "#ffffff"], ["RCL:1047:", C.cl], ["examplecounty.gov", rgba(C.psap, 1)]];
+    const lines: [string, string][] = [["urn:emergency:uid:gis:", "#ffffff"], ["RCL:1047:", "#8FB8FF"], ["examplecounty.gov", "#C9CED9"]];
     const total = lines.reduce((n, [l]) => n + l.length, 0);
     let left = Math.floor(total * prog(s, t.id - 0.4, 1.3, (x) => x));
     g.font = "700 44px 'JetBrains Mono', monospace";
@@ -272,24 +277,21 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
   const title = prog(s, t.next - 0.2, 0.6, ease.out) * (1 - prog(s, t.points - 0.5, 0.5, ease.inOut));
   if (title > 0) {
     g.save(); g.globalAlpha *= title; g.textAlign = "center"; g.textBaseline = "middle";
-    g.fillStyle = "#ffffff"; g.font = "800 64px Inter, sans-serif"; g.fillText("NG9-1-1 GIS Data Model", 540, 250 - 20 * (1 - title));
-    g.fillStyle = C.cl; g.font = "700 40px 'JetBrains Mono', monospace"; g.fillText("NENA-STA-006.3", 540, 330 - 20 * (1 - title));
+    g.fillStyle = C.ink; g.font = "800 64px Inter, sans-serif"; g.fillText("NG9-1-1 GIS Data Model", 540, 250 - 20 * (1 - title));
+    g.fillStyle = C.grey; g.font = "700 40px 'JetBrains Mono', monospace"; g.fillText("NENA-STA-006.3", 540, 330 - 20 * (1 - title));
     g.restore();
   }
   const crs = prog(s, t.coordinates - 0.2, 0.5, ease.out) * (1 - prog(s, t.counties, 0.6, ease.inOut));
   if (crs > 0) {
-    g.save(); g.globalAlpha *= crs; g.fillStyle = "rgba(10,14,18,0.9)"; g.beginPath(); g.roundRect(250, 1640, 580, 84, 18); g.fill();
-    g.fillStyle = "#cfe3ff"; g.font = "700 40px 'JetBrains Mono', monospace"; g.textAlign = "center"; g.textBaseline = "middle";
+    g.save(); g.globalAlpha *= crs; g.fillStyle = "#ffffff"; g.strokeStyle = C.line; g.lineWidth = 3; g.beginPath(); g.roundRect(250, 1640, 580, 84, 18); g.fill(); g.stroke();
+    g.fillStyle = C.ink; g.font = "700 40px 'JetBrains Mono', monospace"; g.textAlign = "center"; g.textBaseline = "middle";
     g.fillText("WGS 84 · EPSG:4326", 540, 1683); g.restore();
   }
 
-  const v = g.createRadialGradient(W / 2, H / 2, 560, W / 2, H / 2, 1250);
-  v.addColorStop(0, "rgba(0,0,0,0)"); v.addColorStop(1, "rgba(0,0,0,0.45)");
-  g.fillStyle = v; g.fillRect(0, 0, W, H);
 }
 
 export const MapWorld: React.FC = () => {
-  const { tl, theme } = useReel();
+  const { tl } = useReel();
   const t = useTimes();
   const ptsA = useMemo(() => addressPoints(XS, YS, -400, 400), []);
   const ptsB = useMemo(() => addressPoints(XS_B, YS_B, 440, 1160).filter(([, y]) => y > 450), []);
@@ -297,7 +299,7 @@ export const MapWorld: React.FC = () => {
   const f = useCurrentFrame();
   useLayoutEffect(() => {
     const g = ref.current?.getContext("2d");
-    if (g) paint(g, f / tl.fps, t, ptsA, ptsB, theme.grounds.dark.bg, theme.marker.color);
+    if (g) paint(g, f / tl.fps, t, ptsA, ptsB, "#FFFFFF", C.accent);
   });
   return <canvas ref={ref} width={W} height={H} style={{ position: "absolute", inset: 0, width: W, height: H }} />;
 };
