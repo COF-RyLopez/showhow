@@ -14,7 +14,7 @@ import { ease, prog, spline, useReel } from "../../../src/engine";
 
 const W = 1080, H = 1920;
 type P = [number, number];
-type T = Record<"dial" | "map" | "answers" | "built" | "points" | "centerlines" | "road" | "numbers" | "left" | "right"
+type T = Record<"dial" | "next" | "map" | "answers" | "built" | "points" | "centerlines" | "road" | "numbers" | "left" | "right"
   | "boundaries" | "answers2" | "police" | "fire" | "medical" | "comes" | "id" | "layer" | "coordinates" | "counties" | "map2" | "end", number>;
 
 function useTimes(): T {
@@ -22,7 +22,7 @@ function useTimes(): T {
   return useMemo(() => {
     const c = (w: string, n = 1) => tl.cue(w, n) / tl.fps;
     return {
-      dial: c("dial"), map: c("map"), answers: c("answers"), built: c("built"), points: c("points"), centerlines: c("centerlines"),
+      dial: c("dial"), next: c("next"), map: c("map"), answers: c("answers"), built: c("built"), points: c("points"), centerlines: c("centerlines"),
       road: c("road", 2), numbers: c("numbers"), left: c("left"), right: c("right"), boundaries: c("boundaries"), answers2: c("answers", 2),
       police: c("police"), fire: c("fire"), medical: c("medical"), comes: c("comes"), id: c("id"), layer: c("layer"),
       coordinates: c("coordinates"), counties: c("counties"), map2: c("map", 3), end: tl.frames / tl.fps,
@@ -145,9 +145,9 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
   g.fillStyle = glow; g.fillRect(0, 0, W, H);
 
   const cam: Cam = {
-    z: spline(s, [[0, 1.12], [t.built, 1.16], [t.road - 1.1, 1.16], [t.road + 0.3, 1.8], [t.right + 0.4, 1.82], [t.boundaries + 0.2, 1.1], [t.police - 0.2, 1.05], [t.fire + 0.4, 0.8], [t.layer, 0.8], [t.coordinates - 0.1, 0.92], [t.counties - 0.5, 0.92], [t.map2 + 0.3, 1.04], [t.end, 1.06]]),
+    z: spline(s, [[0, 1.0], [t.built + 0.5, 1.24], [t.road - 1.1, 1.16], [t.road + 0.3, 1.8], [t.right + 0.4, 1.82], [t.boundaries + 0.2, 1.1], [t.police - 0.2, 1.05], [t.fire + 0.4, 0.8], [t.layer, 0.8], [t.coordinates - 0.1, 0.92], [t.counties - 0.5, 0.92], [t.map2 + 0.3, 1.04], [t.end, 1.06]]),
     cx: spline(s, [[0, 0], [t.road - 1.1, 0], [t.road + 0.3, 100], [t.right + 0.4, 100], [t.boundaries + 0.2, 0], [t.end, 0]]),
-    cy: spline(s, [[0, 0], [t.road - 1.1, 0], [t.road + 0.3, 40], [t.right + 0.4, 40], [t.boundaries + 0.2, 0], [t.counties - 0.5, 0], [t.map2 + 0.3, 385], [t.end, 390]]),
+    cy: spline(s, [[0, 60], [t.built + 0.5, -20], [t.road - 1.1, 0], [t.road + 0.3, 40], [t.right + 0.4, 40], [t.boundaries + 0.2, 0], [t.counties - 0.5, 0], [t.map2 + 0.3, 385], [t.end, 390]]),
     tilt: spline(s, [[0, 0], [t.police - 1.6, 0], [t.police - 0.6, 0], [t.fire + 0.3, 1], [t.layer, 1], [t.coordinates, 0], [t.coordinates + 1, 0], [t.end, 0]]),
     lift: spline(s, [[0, 0], [t.police - 1.4, 0], [t.police - 0.4, 0], [t.fire + 0.5, 1], [t.layer, 1], [t.coordinates, 0], [t.coordinates + 1, 0], [t.end, 0]]),
   };
@@ -266,6 +266,14 @@ function paint(g: CanvasRenderingContext2D, s: number, t: T, ptsA: P[], ptsB: P[
     let left = Math.floor(total * prog(s, t.id - 0.4, 1.3, (x) => x));
     g.font = "700 44px 'JetBrains Mono', monospace";
     lines.forEach(([l, col], i) => { g.fillStyle = col; g.fillText(l.slice(0, Math.max(0, left)), 110, 286 + i * 58); left -= l.length; });
+    g.restore();
+  }
+  // the title, on "Next generation"
+  const title = prog(s, t.next - 0.2, 0.6, ease.out) * (1 - prog(s, t.points - 0.5, 0.5, ease.inOut));
+  if (title > 0) {
+    g.save(); g.globalAlpha *= title; g.textAlign = "center"; g.textBaseline = "middle";
+    g.fillStyle = "#ffffff"; g.font = "800 64px Inter, sans-serif"; g.fillText("NG9-1-1 GIS Data Model", 540, 250 - 20 * (1 - title));
+    g.fillStyle = C.cl; g.font = "700 40px 'JetBrains Mono', monospace"; g.fillText("NENA-STA-006.3", 540, 330 - 20 * (1 - title));
     g.restore();
   }
   const crs = prog(s, t.coordinates - 0.2, 0.5, ease.out) * (1 - prog(s, t.counties, 0.6, ease.inOut));
