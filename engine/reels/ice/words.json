@@ -1,0 +1,674 @@
+{
+ "duration": 20.025,
+ "silences": [
+  [
+   2.5,
+   2.8
+  ],
+  [
+   3.56,
+   3.76
+  ],
+  [
+   5.42,
+   5.72
+  ],
+  [
+   6.75,
+   7.02
+  ],
+  [
+   8.36,
+   8.49
+  ],
+  [
+   9.17,
+   9.47
+  ],
+  [
+   11.61,
+   11.91
+  ],
+  [
+   13.89,
+   14.15
+  ],
+  [
+   16.81,
+   17.12
+  ],
+  [
+   19.23,
+   20.02
+  ]
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "ground": "dark",
+   "firstWord": 0
+  },
+  {
+   "id": "lattice",
+   "ground": "dark",
+   "firstWord": 18
+  },
+  {
+   "id": "weight",
+   "ground": "dark",
+   "firstWord": 36
+  }
+ ],
+ "blocks": [
+  {
+   "words": [
+    0,
+    1,
+    2
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    8,
+    9
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    10,
+    11,
+    12,
+    13,
+    14
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    15,
+    16,
+    17
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    18,
+    19,
+    20
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    21,
+    22,
+    23,
+    24
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    25,
+    26
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    27,
+    28,
+    29,
+    30
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    31,
+    32,
+    33,
+    34,
+    35
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    36,
+    37,
+    38,
+    39
+   ],
+   "slot": "top",
+   "scene": 2
+  },
+  {
+   "words": [
+    40,
+    41,
+    42,
+    43
+   ],
+   "slot": "top",
+   "scene": 2
+  },
+  {
+   "words": [
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+   ],
+   "slot": "top",
+   "scene": 2
+  },
+  {
+   "words": [
+    51,
+    52,
+    53,
+    54,
+    55
+   ],
+   "slot": "top",
+   "scene": 2
+  },
+  {
+   "words": [
+    56,
+    57,
+    58,
+    59
+   ],
+   "slot": "top",
+   "scene": 2
+  },
+  {
+   "words": [
+    60,
+    61,
+    62,
+    63
+   ],
+   "slot": "top",
+   "scene": 2
+  }
+ ],
+ "words": [
+  {
+   "w": "Almost",
+   "key": false,
+   "emoji": null,
+   "t": 0.04,
+   "e": 0.34
+  },
+  {
+   "w": "every",
+   "key": false,
+   "emoji": null,
+   "t": 0.34,
+   "e": 0.72
+  },
+  {
+   "w": "solid",
+   "key": true,
+   "emoji": null,
+   "t": 0.72,
+   "e": 1.18
+  },
+  {
+   "w": "sinks",
+   "key": false,
+   "emoji": null,
+   "t": 1.18,
+   "e": 1.5
+  },
+  {
+   "w": "in",
+   "key": false,
+   "emoji": null,
+   "t": 1.5,
+   "e": 1.74
+  },
+  {
+   "w": "its",
+   "key": false,
+   "emoji": null,
+   "t": 1.74,
+   "e": 1.86
+  },
+  {
+   "w": "own",
+   "key": false,
+   "emoji": null,
+   "t": 1.86,
+   "e": 2.06
+  },
+  {
+   "w": "liquid.",
+   "key": true,
+   "emoji": null,
+   "t": 2.06,
+   "e": 2.42
+  },
+  {
+   "w": "Ice",
+   "key": true,
+   "emoji": null,
+   "t": 2.8295,
+   "e": 3.0095
+  },
+  {
+   "w": "floats,",
+   "key": false,
+   "emoji": null,
+   "t": 3.0095,
+   "e": 3.3295
+  },
+  {
+   "w": "with",
+   "key": false,
+   "emoji": null,
+   "t": 3.7595,
+   "e": 3.8925
+  },
+  {
+   "w": "nine",
+   "key": false,
+   "emoji": null,
+   "t": 3.8925,
+   "e": 4.1785
+  },
+  {
+   "w": "tenths",
+   "key": true,
+   "emoji": null,
+   "t": 4.1785,
+   "e": 4.5895
+  },
+  {
+   "w": "of",
+   "key": false,
+   "emoji": null,
+   "t": 4.5895,
+   "e": 4.6495
+  },
+  {
+   "w": "it",
+   "key": false,
+   "emoji": null,
+   "t": 4.6495,
+   "e": 4.7695
+  },
+  {
+   "w": "under",
+   "key": false,
+   "emoji": null,
+   "t": 4.7695,
+   "e": 4.9295
+  },
+  {
+   "w": "the",
+   "key": false,
+   "emoji": null,
+   "t": 4.9295,
+   "e": 5.0695
+  },
+  {
+   "w": "water.",
+   "key": true,
+   "emoji": null,
+   "t": 5.0695,
+   "e": 5.3495
+  },
+  {
+   "w": "As",
+   "key": false,
+   "emoji": null,
+   "t": 5.7218,
+   "e": 5.9678
+  },
+  {
+   "w": "water",
+   "key": false,
+   "emoji": null,
+   "t": 5.9678,
+   "e": 6.1678
+  },
+  {
+   "w": "freezes,",
+   "key": true,
+   "emoji": null,
+   "t": 6.1678,
+   "e": 6.5018
+  },
+  {
+   "w": "each",
+   "key": false,
+   "emoji": null,
+   "t": 7.0218,
+   "e": 7.2018
+  },
+  {
+   "w": "molecule",
+   "key": false,
+   "emoji": null,
+   "t": 7.2018,
+   "e": 7.6818
+  },
+  {
+   "w": "locks",
+   "key": false,
+   "emoji": null,
+   "t": 7.6818,
+   "e": 8.0418
+  },
+  {
+   "w": "onto",
+   "key": false,
+   "emoji": null,
+   "t": 8.0418,
+   "e": 8.3018
+  },
+  {
+   "w": "four",
+   "key": true,
+   "emoji": null,
+   "t": 8.3018,
+   "e": 8.6218
+  },
+  {
+   "w": "neighbours,",
+   "key": false,
+   "emoji": null,
+   "t": 8.6218,
+   "e": 8.9618
+  },
+  {
+   "w": "in",
+   "key": false,
+   "emoji": null,
+   "t": 9.5018,
+   "e": 9.5818
+  },
+  {
+   "w": "rings",
+   "key": true,
+   "emoji": null,
+   "t": 9.5818,
+   "e": 9.8618
+  },
+  {
+   "w": "of",
+   "key": false,
+   "emoji": null,
+   "t": 9.8618,
+   "e": 10.0818
+  },
+  {
+   "w": "six",
+   "key": false,
+   "emoji": null,
+   "t": 10.0818,
+   "e": 10.3418
+  },
+  {
+   "w": "with",
+   "key": false,
+   "emoji": null,
+   "t": 10.3418,
+   "e": 10.6218
+  },
+  {
+   "w": "space",
+   "key": true,
+   "emoji": null,
+   "t": 10.6218,
+   "e": 10.9218
+  },
+  {
+   "w": "in",
+   "key": false,
+   "emoji": null,
+   "t": 10.9218,
+   "e": 11.2018
+  },
+  {
+   "w": "the",
+   "key": false,
+   "emoji": null,
+   "t": 11.2018,
+   "e": 11.3018
+  },
+  {
+   "w": "middle.",
+   "key": false,
+   "emoji": null,
+   "t": 11.3018,
+   "e": 11.5018
+  },
+  {
+   "w": "The",
+   "key": false,
+   "emoji": null,
+   "t": 11.9178,
+   "e": 12.1258
+  },
+  {
+   "w": "same",
+   "key": false,
+   "emoji": null,
+   "t": 12.1258,
+   "e": 12.3018
+  },
+  {
+   "w": "water",
+   "key": false,
+   "emoji": null,
+   "t": 12.3018,
+   "e": 12.5478
+  },
+  {
+   "w": "now",
+   "key": false,
+   "emoji": null,
+   "t": 12.5478,
+   "e": 12.8078
+  },
+  {
+   "w": "takes",
+   "key": false,
+   "emoji": null,
+   "t": 12.8078,
+   "e": 13.0678
+  },
+  {
+   "w": "up",
+   "key": false,
+   "emoji": null,
+   "t": 13.0678,
+   "e": 13.2678
+  },
+  {
+   "w": "more",
+   "key": false,
+   "emoji": null,
+   "t": 13.2678,
+   "e": 13.5078
+  },
+  {
+   "w": "room,",
+   "key": true,
+   "emoji": null,
+   "t": 13.5078,
+   "e": 13.8078
+  },
+  {
+   "w": "so",
+   "key": false,
+   "emoji": null,
+   "t": 14.1478,
+   "e": 14.3168
+  },
+  {
+   "w": "a",
+   "key": false,
+   "emoji": null,
+   "t": 14.3168,
+   "e": 14.4668
+  },
+  {
+   "w": "litre",
+   "key": false,
+   "emoji": null,
+   "t": 14.4668,
+   "e": 14.7098
+  },
+  {
+   "w": "of",
+   "key": false,
+   "emoji": null,
+   "t": 14.7098,
+   "e": 14.8078
+  },
+  {
+   "w": "ice",
+   "key": false,
+   "emoji": null,
+   "t": 14.8078,
+   "e": 15.1478
+  },
+  {
+   "w": "weighs",
+   "key": true,
+   "emoji": null,
+   "t": 15.1478,
+   "e": 15.3878
+  },
+  {
+   "w": "less",
+   "key": false,
+   "emoji": null,
+   "t": 15.3878,
+   "e": 15.7078
+  },
+  {
+   "w": "than",
+   "key": false,
+   "emoji": null,
+   "t": 15.7078,
+   "e": 15.9678
+  },
+  {
+   "w": "a",
+   "key": false,
+   "emoji": null,
+   "t": 15.9678,
+   "e": 16.1078
+  },
+  {
+   "w": "litre",
+   "key": false,
+   "emoji": null,
+   "t": 16.1078,
+   "e": 16.3278
+  },
+  {
+   "w": "of",
+   "key": false,
+   "emoji": null,
+   "t": 16.3278,
+   "e": 16.4478
+  },
+  {
+   "w": "water.",
+   "key": true,
+   "emoji": null,
+   "t": 16.4478,
+   "e": 16.7278
+  },
+  {
+   "w": "That's",
+   "key": false,
+   "emoji": null,
+   "t": 17.1252,
+   "e": 17.3692
+  },
+  {
+   "w": "why",
+   "key": false,
+   "emoji": null,
+   "t": 17.3692,
+   "e": 17.5942
+  },
+  {
+   "w": "lakes",
+   "key": true,
+   "emoji": null,
+   "t": 17.5942,
+   "e": 17.8252
+  },
+  {
+   "w": "freeze",
+   "key": false,
+   "emoji": null,
+   "t": 17.8252,
+   "e": 18.1452
+  },
+  {
+   "w": "from",
+   "key": false,
+   "emoji": null,
+   "t": 18.1452,
+   "e": 18.4252
+  },
+  {
+   "w": "the",
+   "key": false,
+   "emoji": null,
+   "t": 18.4252,
+   "e": 18.5852
+  },
+  {
+   "w": "top",
+   "key": true,
+   "emoji": null,
+   "t": 18.5852,
+   "e": 18.7652
+  },
+  {
+   "w": "down.",
+   "key": false,
+   "emoji": null,
+   "t": 18.7652,
+   "e": 19.1252
+  }
+ ]
+}
