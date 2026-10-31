@@ -1,0 +1,18 @@
+# North Fresno, where the Fresno, county and Clovis CAD/PSAP areas meet. Real County of Fresno GIS data.
+== hook | ground: light
+In north *Fresno,*
+three emergency *agencies*
+meet within a few *blocks.*
+== paula | ground: light
+These *neighbors*
+on Paula Avenue
+are served by different *agencies.*
+One home is in *Fresno.*
+The other is a county *island,*
+though its mail says *Clovis.*
+== willow | ground: light
+And on *Willow* Avenue,
+it's Clovis.
+Next generation nine-one-one
+routes each call by *location,*
+not mailing *city.*

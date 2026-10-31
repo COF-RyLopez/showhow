@@ -1,0 +1,5 @@
+{
+  "kokoro": { "voice": "af_heart", "speed": 1.0 },
+  "theme": { "motion": "measured", "handover": "continuous" },
+  "render": { "gl": "swangle", "concurrency": 1 }
+}
