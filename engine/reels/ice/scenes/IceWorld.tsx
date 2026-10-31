@@ -94,14 +94,16 @@ function waterBody(g: CanvasRenderingContext2D, l: number, r: number, bottom: nu
   const gr = g.createLinearGradient(0, top, 0, bottom);
   gr.addColorStop(0, `rgba(88,160,235,${0.55 * a})`); gr.addColorStop(1, `rgba(18,58,128,${0.85 * a})`);
   g.fillStyle = gr; g.fill(); g.clip();
-  g.globalCompositeOperation = "lighter"; g.strokeStyle = `rgba(150,205,255,${0.05 * a})`; g.lineWidth = 16; g.filter = "blur(7px)";
+  g.globalCompositeOperation = "lighter"; g.lineCap = "round";
   for (let i = 0; i < 5; i++) {
     g.beginPath();
     for (let x = l; x <= r; x += 12) {
       const y = top + 50 + i * ((bottom - top) / 5) + (20 + 9 * i) * Math.sin(x * (0.011 + 0.004 * i) + s * 1.3 + i * 1.7) + 10 * Math.sin(x * 0.037 - s * 0.9 + i * 2.3);
       x === l ? g.moveTo(x, y) : g.lineTo(x, y);
     }
-    g.stroke();
+    // ponytail: two wide faint strokes fake a soft edge; a blur filter here made the full render ~10x slower
+    g.strokeStyle = `rgba(150,205,255,${0.025 * a})`; g.lineWidth = 30; g.stroke();
+    g.strokeStyle = `rgba(150,205,255,${0.03 * a})`; g.lineWidth = 12; g.stroke();
   }
   g.restore();
   g.strokeStyle = `rgba(200,232,255,${0.95 * a})`; g.lineWidth = 3;
@@ -215,10 +217,18 @@ function lattice(): { mols: Mol[]; ring: number[]; four: number } {
 
 const BACK: [number, number] = [26, -22];   // the layer behind sits a little up and to the right, smaller and dimmer
 
-function molecule(g: CanvasRenderingContext2D, x: number, y: number, th: number, k: number) {
+/** an out-of-focus sphere: its colour fading to nothing past its edge (cheap stand-in for a blur filter) */
+function blob(g: CanvasRenderingContext2D, x: number, y: number, r: number, c: RGB) {
+  const gr = g.createRadialGradient(x, y, 0, x, y, r * 1.5);
+  gr.addColorStop(0, rgb(c, 0.9)); gr.addColorStop(0.5, rgb(c, 0.8, 0.8)); gr.addColorStop(1, rgb(c, 0.6, 0));
+  g.fillStyle = gr; g.beginPath(); g.arc(x, y, r * 1.5, 0, 7); g.fill();
+}
+
+function molecule(g: CanvasRenderingContext2D, x: number, y: number, th: number, k: number, soft = false) {
+  const draw = soft ? blob : ball;
   for (const d of [-0.91, 0.91])   // H–O–H is 104.5°
-    ball(g, x + Math.cos(th + d) * 0.36 * B * k, y + Math.sin(th + d) * 0.36 * B * k, 0.14 * B * k, [228, 232, 238]);
-  ball(g, x, y, 0.24 * B * k, [222, 74, 60]);
+    draw(g, x + Math.cos(th + d) * 0.36 * B * k, y + Math.sin(th + d) * 0.36 * B * k, 0.14 * B * k, [228, 232, 238]);
+  draw(g, x, y, 0.24 * B * k, [222, 74, 60]);
 }
 
 function molecules(g: CanvasRenderingContext2D, s: number, t: T, L: ReturnType<typeof lattice>, accent: string) {
@@ -237,8 +247,8 @@ function molecules(g: CanvasRenderingContext2D, s: number, t: T, L: ReturnType<t
   // deep water behind it all, then the layer behind, out of focus
   backlight(g, HC[0], HC[1], 1500, [30, 70, 130], 0.55);
   g.save();
-  g.globalAlpha *= 0.4; g.filter = "blur(5px)";
-  L.mols.forEach((_, i) => { const p = pos(i, 1); molecule(g, p.x + BACK[0], p.y + BACK[1], p.th + 0.5, 0.72); });
+  g.globalAlpha *= 0.45;
+  L.mols.forEach((_, i) => { const p = pos(i, 1); molecule(g, p.x + BACK[0], p.y + BACK[1], p.th + 0.5, 0.72, true); });
   g.restore();
 
   // hydrogen bonds once frozen
