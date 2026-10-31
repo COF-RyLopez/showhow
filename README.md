@@ -89,6 +89,7 @@ your approval, and works through the tools:
 |---|---|
 | `new_reel` | makes the folder: script, caption, config and a stub per scene |
 | `voice` | voices the script with ElevenLabs and puts every pause in real silence |
+| `voice_free` | the same with Kokoro, an open voice model that runs locally with no key |
 | `align` | times every caption word and writes `words.json` |
 | `check_plan` | checks the caption and timing before anything is drawn |
 | `typecheck` | type-checks the engine and every scene |

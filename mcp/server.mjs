@@ -2,7 +2,8 @@
 // Showhow MCP server, free version. It runs on your own machine over stdio and gives an agent (Claude Code, or any
 // MCP client) the deterministic steps of a reel: make the folder, voice it, time it, check it, draft it, render it.
 // The agent writes the script and draws the scenes; every check here answers PASS or FAIL with the reasons.
-// Nothing leaves your machine except the ElevenLabs call in `voice`, with your own key from .env.local.
+// Nothing leaves your machine except the ElevenLabs call in `voice`, with your own key from .env.local
+// (`voice_free` voices with Kokoro locally instead, no key).
 //   claude mcp add showhow -- node /path/to/showhow/mcp/server.mjs
 import { spawn } from "node:child_process";
 import fs from "node:fs";
@@ -92,6 +93,17 @@ const TOOLS = {
     async run({ slug }) {
       needReel(slug);
       const a = await run(PY, ["scripts/voice.py", slug]);
+      if (!a.pass) return verdict([{ step: "voice", ...a }]);
+      return verdict([{ step: "voice", ...a }, { step: "tighten", ...(await run(PY, ["scripts/tighten.py", slug])) }]);
+    },
+  },
+  voice_free: {
+    description: "Voice the script with Kokoro, the open model that runs on this machine with no key (models/kokoro-v1.0.onnx and voices-v1.0.bin), time it with faster-whisper, then put every pause in real silence. Use instead of voice when there is no ElevenLabs key.",
+    input: { slug: "string", voice: "Kokoro voice, e.g. af_heart (the default, or reel.json \"kokoro\"), af_bella, am_michael, bf_emma" },
+    required: ["slug"],
+    async run({ slug, voice }) {
+      needReel(slug);
+      const a = await run(PY, ["scripts/kokoro.py", slug, ...(voice ? ["--voice", voice] : [])]);
       if (!a.pass) return verdict([{ step: "voice", ...a }]);
       return verdict([{ step: "voice", ...a }, { step: "tighten", ...(await run(PY, ["scripts/tighten.py", slug])) }]);
     },
@@ -204,7 +216,7 @@ async function handle(msg) {
   const ok = (result) => ({ jsonrpc: "2.0", id, result });
   if (method === "initialize")
     return ok({ protocolVersion: params?.protocolVersion ?? "2025-06-18", capabilities: { tools: {} }, serverInfo: { name: "showhow", version: VERSION },
-      instructions: "Showhow by Sirio, free version. Order: new_reel, voice, align, check_plan, draw the scenes, typecheck, stills, draft (show it), render, check_render. Fix every FAIL before delivering." });
+      instructions: "Showhow by Sirio, free version. Order: new_reel, voice (or voice_free with no ElevenLabs key), align, check_plan, draw the scenes, typecheck, stills, draft (show it), render, check_render. Fix every FAIL before delivering." });
   if (method === "tools/list")
     return ok({ tools: Object.entries(TOOLS).map(([name, t]) => ({ name, description: t.description, inputSchema: schema(t) })) });
   if (method === "tools/call") {
