@@ -30,7 +30,12 @@ const configPath = path.join(reelDir, "reel.json");
 const config = fs.existsSync(configPath) ? JSON.parse(fs.readFileSync(configPath, "utf-8")) : {};
 
 // public/ is copied by the bundler, which skips symlinks, so the voice and assets go in as real files
-const voice = fs.readdirSync(reelDir).find((f) => /^voice\.(mp3|wav|m4a)$/.test(f));
+// sound.wav (scripts/sound.py: voice + hits + bed) plays instead of the bare voice, unless it is older than what it was mixed from
+const bare = fs.readdirSync(reelDir).find((f) => /^voice\.(mp3|wav|m4a)$/.test(f));
+const mtime = (f) => fs.statSync(path.join(reelDir, f)).mtimeMs;
+const mixed = fs.existsSync(path.join(reelDir, "sound.wav")) && bare && mtime("sound.wav") >= Math.max(mtime(bare), mtime("words.json"));
+if (!mixed && fs.existsSync(path.join(reelDir, "sound.wav"))) console.error("sound.wav is older than the voice or words.json: playing the bare voice. Run scripts/sound.py again.");
+const voice = mixed ? "sound.wav" : bare;
 const pub = path.join(dir, "public", slug);
 fs.mkdirSync(pub, { recursive: true });
 if (voice) fs.copyFileSync(path.join(reelDir, voice), path.join(pub, voice));

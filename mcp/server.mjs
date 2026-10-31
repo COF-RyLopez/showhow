@@ -117,6 +117,16 @@ const TOOLS = {
       return verdict([{ step: "align", ...(await run(PY, ["scripts/align.py", slug])) }]);
     },
   },
+  sound: {
+    description: "Mix the reel's sound into sound.wav: the voice, a click on every key word, a whoosh and low hit at each scene change, and a pad that ducks under the voice. All synthesised, no downloads. Run after align (and again after any new voice or caption); render then plays it.",
+    input: { slug: "string", bed: "string, optional: \"no\" to leave out the pad", sfx: "string, optional: \"no\" to leave out the hits" },
+    required: ["slug"],
+    async run({ slug, bed, sfx }) {
+      needReel(slug);
+      const k = [...(bed === "no" ? ["--no-bed"] : []), ...(sfx === "no" ? ["--no-sfx"] : [])];
+      return verdict([{ step: "sound", ...(await run(PY, ["scripts/sound.py", slug, ...k])) }]);
+    },
+  },
   check_plan: {
     description: "Before drawing: caption blocks, key words, scene changes inside silence, pace, and type sizes in the scenes. PASS or FAIL.",
     input: { slug: "string" },
@@ -216,7 +226,7 @@ async function handle(msg) {
   const ok = (result) => ({ jsonrpc: "2.0", id, result });
   if (method === "initialize")
     return ok({ protocolVersion: params?.protocolVersion ?? "2025-06-18", capabilities: { tools: {} }, serverInfo: { name: "showhow", version: VERSION },
-      instructions: "Showhow by Sirio, free version. Order: new_reel, voice (or voice_free with no ElevenLabs key), align, check_plan, draw the scenes, typecheck, stills, draft (show it), render, check_render. Fix every FAIL before delivering." });
+      instructions: "Showhow by Sirio, free version. Order: new_reel, voice (or voice_free with no ElevenLabs key), align, sound, check_plan, draw the scenes, typecheck, stills, draft (show it), render, check_render. Fix every FAIL before delivering." });
   if (method === "tools/list")
     return ok({ tools: Object.entries(TOOLS).map(([name, t]) => ({ name, description: t.description, inputSchema: schema(t) })) });
   if (method === "tools/call") {
