@@ -113,7 +113,9 @@ process.on("exit", cleanup);
 for (const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => { cleanup(); process.exit(1); });
 // set SH_NO_CACHE=1 to turn off webpack's disk cache, which grows by about 1 GB per bundle under node_modules/.cache
 serveUrl = await bundle({ entryPoint: path.join(dir, "src/index.ts"), publicDir, enableCaching: !process.env.SH_NO_CACHE });
-const composition = await selectComposition({ serveUrl, id: "Showhow", inputProps, browserExecutable });
+// a reel that draws with WebGL (MapLibre) sets "render": {"gl": "swangle", "concurrency": 1} in reel.json: software WebGL, one tab
+const chromiumOptions = config.render?.gl ? { gl: config.render.gl } : {};
+const composition = await selectComposition({ serveUrl, id: "Showhow", inputProps, browserExecutable, chromiumOptions });
 const fps = composition.fps;
 
 if (opt("--stills")) {
@@ -121,7 +123,7 @@ if (opt("--stills")) {
   fs.mkdirSync(out, { recursive: true });
   for (const s of opt("--stills").split(",").map(Number)) {
     const output = path.join(out, `t_${s.toFixed(2).padStart(6, "0")}${inputProps.guides ? "_guides" : ""}.png`);
-    await renderStill({ serveUrl, composition, inputProps, browserExecutable, scale: args.includes("--half") ? 0.5 : 1, frame: Math.min(composition.durationInFrames - 1, Math.round(s * fps)), output });
+    await renderStill({ serveUrl, composition, inputProps, browserExecutable, chromiumOptions, scale: args.includes("--half") ? 0.5 : 1, frame: Math.min(composition.durationInFrames - 1, Math.round(s * fps)), output });
     console.log(output);
   }
 } else {
@@ -130,10 +132,10 @@ if (opt("--stills")) {
     ? [Math.round(Number(opt("--from") ?? 0) * fps), Math.min(composition.durationInFrames - 1, Math.round(Number(opt("--to") ?? 1e9) * fps))]
     : undefined;
   await renderMedia({
-    serveUrl, composition, inputProps, browserExecutable, outputLocation, frameRange,
+    serveUrl, composition, inputProps, browserExecutable, chromiumOptions, outputLocation, frameRange,
     codec: "h264", pixelFormat: "yuv420p",
     ...(args.includes("--draft") ? { scale: 0.5, crf: 30, x264Preset: "veryfast" } : { crf: 16, x264Preset: "slow" }), // --draft: half size, quick encode, never delivered
-    concurrency: Number(opt("--concurrency") ?? 2), // Remotion would use half the cores by default, which opens too many Chrome tabs beside other builds
+    concurrency: Number(config.render?.concurrency ?? opt("--concurrency") ?? 2), // Remotion would use half the cores by default, which opens too many Chrome tabs beside other builds
     onProgress: ({ progress }) => process.stdout.write(`\r${Math.round(progress * 100)}%`),
   });
   console.log(`\n${outputLocation}`);
