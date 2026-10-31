@@ -1,0 +1,582 @@
+{
+ "duration": 21.115,
+ "silences": [
+  [
+   0.91,
+   1.19
+  ],
+  [
+   3.97,
+   4.27
+  ],
+  [
+   7.71,
+   8.01
+  ],
+  [
+   9.45,
+   9.75
+  ],
+  [
+   11.27,
+   11.52
+  ],
+  [
+   12.91,
+   13.21
+  ],
+  [
+   14.31,
+   14.51
+  ],
+  [
+   15.21,
+   15.51
+  ],
+  [
+   19.01,
+   19.31
+  ],
+  [
+   20.31,
+   21.11
+  ]
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "ground": "light",
+   "firstWord": 0
+  },
+  {
+   "id": "paula",
+   "ground": "light",
+   "firstWord": 11
+  },
+  {
+   "id": "willow",
+   "ground": "light",
+   "firstWord": 37
+  }
+ ],
+ "blocks": [
+  {
+   "words": [
+    0,
+    1,
+    2
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    3,
+    4,
+    5
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "slot": "top",
+   "scene": 0
+  },
+  {
+   "words": [
+    11,
+    12
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    13,
+    14,
+    15
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    21,
+    22,
+    23,
+    24,
+    25
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    32,
+    33,
+    34,
+    35,
+    36
+   ],
+   "slot": "top",
+   "scene": 1
+  },
+  {
+   "words": [
+    37,
+    38,
+    39,
+    40
+   ],
+   "slot": "top",
+   "scene": 2
+  },
+  {
+   "words": [
+    41,
+    42
+   ],
+   "slot": "top",
+   "scene": 2
+  },
+  {
+   "words": [
+    43,
+    44,
+    45
+   ],
+   "slot": "top",
+   "scene": 2
+  },
+  {
+   "words": [
+    46,
+    47,
+    48,
+    49,
+    50
+   ],
+   "slot": "top",
+   "scene": 2
+  },
+  {
+   "words": [
+    51,
+    52,
+    53
+   ],
+   "slot": "top",
+   "scene": 2
+  }
+ ],
+ "words": [
+  {
+   "w": "In",
+   "key": false,
+   "emoji": null,
+   "t": 0.0,
+   "e": 0.16
+  },
+  {
+   "w": "north",
+   "key": false,
+   "emoji": null,
+   "t": 0.16,
+   "e": 0.38
+  },
+  {
+   "w": "Fresno,",
+   "key": true,
+   "emoji": null,
+   "t": 0.38,
+   "e": 0.7
+  },
+  {
+   "w": "three",
+   "key": false,
+   "emoji": null,
+   "t": 1.22,
+   "e": 1.38
+  },
+  {
+   "w": "emergency",
+   "key": false,
+   "emoji": null,
+   "t": 1.38,
+   "e": 1.96
+  },
+  {
+   "w": "agencies",
+   "key": true,
+   "emoji": null,
+   "t": 1.96,
+   "e": 2.6
+  },
+  {
+   "w": "meet",
+   "key": false,
+   "emoji": null,
+   "t": 2.6,
+   "e": 2.92
+  },
+  {
+   "w": "within",
+   "key": false,
+   "emoji": null,
+   "t": 2.92,
+   "e": 3.18
+  },
+  {
+   "w": "a",
+   "key": false,
+   "emoji": null,
+   "t": 3.18,
+   "e": 3.28
+  },
+  {
+   "w": "few",
+   "key": false,
+   "emoji": null,
+   "t": 3.28,
+   "e": 3.44
+  },
+  {
+   "w": "blocks.",
+   "key": true,
+   "emoji": null,
+   "t": 3.44,
+   "e": 3.82
+  },
+  {
+   "w": "These",
+   "key": false,
+   "emoji": null,
+   "t": 4.3327,
+   "e": 4.5328
+  },
+  {
+   "w": "neighbors",
+   "key": true,
+   "emoji": null,
+   "t": 4.5328,
+   "e": 4.8528
+  },
+  {
+   "w": "on",
+   "key": false,
+   "emoji": null,
+   "t": 4.8528,
+   "e": 5.1328
+  },
+  {
+   "w": "Paula",
+   "key": false,
+   "emoji": null,
+   "t": 5.1328,
+   "e": 5.4127
+  },
+  {
+   "w": "Avenue",
+   "key": false,
+   "emoji": null,
+   "t": 5.4127,
+   "e": 5.7927
+  },
+  {
+   "w": "are",
+   "key": false,
+   "emoji": null,
+   "t": 5.7927,
+   "e": 6.0728
+  },
+  {
+   "w": "served",
+   "key": false,
+   "emoji": null,
+   "t": 6.0728,
+   "e": 6.4328
+  },
+  {
+   "w": "by",
+   "key": false,
+   "emoji": null,
+   "t": 6.4328,
+   "e": 6.6728
+  },
+  {
+   "w": "different",
+   "key": false,
+   "emoji": null,
+   "t": 6.6728,
+   "e": 6.9527
+  },
+  {
+   "w": "agencies.",
+   "key": true,
+   "emoji": null,
+   "t": 6.9527,
+   "e": 7.4928
+  },
+  {
+   "w": "One",
+   "key": false,
+   "emoji": null,
+   "t": 8.0293,
+   "e": 8.2093
+  },
+  {
+   "w": "home",
+   "key": false,
+   "emoji": null,
+   "t": 8.2093,
+   "e": 8.5493
+  },
+  {
+   "w": "is",
+   "key": false,
+   "emoji": null,
+   "t": 8.5493,
+   "e": 8.7493
+  },
+  {
+   "w": "in",
+   "key": false,
+   "emoji": null,
+   "t": 8.7493,
+   "e": 8.9293
+  },
+  {
+   "w": "Fresno.",
+   "key": true,
+   "emoji": null,
+   "t": 8.9293,
+   "e": 9.2493
+  },
+  {
+   "w": "The",
+   "key": false,
+   "emoji": null,
+   "t": 9.753,
+   "e": 9.833
+  },
+  {
+   "w": "other",
+   "key": false,
+   "emoji": null,
+   "t": 9.833,
+   "e": 10.033
+  },
+  {
+   "w": "is",
+   "key": false,
+   "emoji": null,
+   "t": 10.033,
+   "e": 10.253
+  },
+  {
+   "w": "a",
+   "key": false,
+   "emoji": null,
+   "t": 10.253,
+   "e": 10.393
+  },
+  {
+   "w": "county",
+   "key": false,
+   "emoji": null,
+   "t": 10.393,
+   "e": 10.753
+  },
+  {
+   "w": "island,",
+   "key": true,
+   "emoji": null,
+   "t": 10.753,
+   "e": 11.173
+  },
+  {
+   "w": "though",
+   "key": false,
+   "emoji": null,
+   "t": 11.523,
+   "e": 11.637
+  },
+  {
+   "w": "its",
+   "key": false,
+   "emoji": null,
+   "t": 11.637,
+   "e": 11.847
+  },
+  {
+   "w": "mail",
+   "key": false,
+   "emoji": null,
+   "t": 11.847,
+   "e": 12.056
+  },
+  {
+   "w": "says",
+   "key": false,
+   "emoji": null,
+   "t": 12.056,
+   "e": 12.393
+  },
+  {
+   "w": "Clovis.",
+   "key": true,
+   "emoji": null,
+   "t": 12.393,
+   "e": 12.833
+  },
+  {
+   "w": "And",
+   "key": false,
+   "emoji": null,
+   "t": 13.2132,
+   "e": 13.3272
+  },
+  {
+   "w": "on",
+   "key": false,
+   "emoji": null,
+   "t": 13.3272,
+   "e": 13.4802
+  },
+  {
+   "w": "Willow",
+   "key": true,
+   "emoji": null,
+   "t": 13.4802,
+   "e": 13.7082
+  },
+  {
+   "w": "Avenue,",
+   "key": false,
+   "emoji": null,
+   "t": 13.7082,
+   "e": 14.1832
+  },
+  {
+   "w": "it's",
+   "key": false,
+   "emoji": null,
+   "t": 14.5432,
+   "e": 14.7232
+  },
+  {
+   "w": "Clovis.",
+   "key": false,
+   "emoji": null,
+   "t": 14.7232,
+   "e": 15.1432
+  },
+  {
+   "w": "Next",
+   "key": false,
+   "emoji": null,
+   "t": 15.5092,
+   "e": 15.9352
+  },
+  {
+   "w": "generation",
+   "key": false,
+   "emoji": null,
+   "t": 15.9352,
+   "e": 16.1992
+  },
+  {
+   "w": "nine-one-one",
+   "key": false,
+   "emoji": null,
+   "t": 16.1992,
+   "e": 17.1392
+  },
+  {
+   "w": "routes",
+   "key": false,
+   "emoji": null,
+   "t": 17.1392,
+   "e": 17.4792
+  },
+  {
+   "w": "each",
+   "key": false,
+   "emoji": null,
+   "t": 17.4792,
+   "e": 17.7392
+  },
+  {
+   "w": "call",
+   "key": false,
+   "emoji": null,
+   "t": 17.7392,
+   "e": 18.0592
+  },
+  {
+   "w": "by",
+   "key": false,
+   "emoji": null,
+   "t": 18.0592,
+   "e": 18.2792
+  },
+  {
+   "w": "location,",
+   "key": true,
+   "emoji": null,
+   "t": 18.2792,
+   "e": 18.8792
+  },
+  {
+   "w": "not",
+   "key": false,
+   "emoji": null,
+   "t": 19.3392,
+   "e": 19.4992
+  },
+  {
+   "w": "mailing",
+   "key": false,
+   "emoji": null,
+   "t": 19.4992,
+   "e": 19.8392
+  },
+  {
+   "w": "city.",
+   "key": true,
+   "emoji": null,
+   "t": 19.8392,
+   "e": 20.1792
+  }
+ ]
+}

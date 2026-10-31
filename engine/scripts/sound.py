@@ -52,9 +52,10 @@ def hit():
     return np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t / 0.16)
 
 
-def bed(dur):
-    """slow detuned-sine chords, each fading into the next"""
-    t = secs(dur)
+def bed(n):
+    """slow detuned-sine chords, each fading into the next, exactly n samples long"""
+    t = np.arange(n) / SR
+    dur = n / SR
     out = np.zeros_like(t)
     for i in range(int(dur // BAR) + 1):
         a = i * BAR
@@ -95,7 +96,7 @@ def mixdown(voice, words, scenes, use_bed=True, use_sfx=True):
     speech = voice[np.abs(voice) > 0.02]
     ref = np.sqrt(np.mean(speech ** 2)) if len(speech) else 0.1
     if use_bed:
-        mix += 0.22 * ref * bed(len(voice) / SR) * duck(voice)
+        mix += 0.22 * ref * bed(len(voice)) * duck(voice)
     if use_sfx:
         for w in words:
             if w.get("key"):
