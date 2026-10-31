@@ -1,4 +1,5 @@
-// Layers from back to front: ground, stage, caption, pinned chrome. No camera, no cuts, no music; all timing comes from the voice.
+// Layers from back to front: ground, stage, caption, pinned chrome. No camera, no cuts; all timing comes from the voice.
+// The audio is the voice, or sound.wav when scripts/sound.py has mixed hits and a bed under it.
 import React, { useEffect, useMemo, useState } from "react";
 import { AbsoluteFill, Audio, continueRender, delayRender, staticFile } from "remotion";
 import { theme as base, withOverrides } from "./theme";

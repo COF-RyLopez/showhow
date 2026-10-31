@@ -1,0 +1,7 @@
+When you dial nine-one-one, a map decides who answers. Next generation nine-one-one sets out exactly how that map is built.
+
+Address points and road centerlines say where you are. Each stretch of road carries its house numbers, left side and right.
+
+Call center boundaries pick who answers. Police, fire and medical boundaries pick who comes.
+
+Every feature has its own unique ID, and every layer uses the same GPS coordinates, so neighboring counties join into one map.

@@ -18,7 +18,11 @@ camera. Every move starts on a word the voice says. There is no presenter and no
    No ElevenLabs key: `python3 scripts/kokoro.py <slug> [--voice af_heart]` (the `voice_free` tool) voices it with the
    open Kokoro model on this machine instead; run `tighten.py` after it the same way.
 3. **Caption and timing.** Write `caption.txt` (below), run `python3 scripts/align.py <slug>`, then
-   `python3 scripts/check.py plan <slug>` until it returns 0.
+   `python3 scripts/check.py plan <slug>` until it returns 0. Then `python3 scripts/sound.py <slug>` mixes
+   `sound.wav`: a click on every `*key*` word, a whoosh and low hit at each scene change, and a pad that ducks
+   under the voice, all synthesised. The render plays it instead of the bare voice. Run it again after any new
+   voice or caption (the render warns and falls back to the voice when it is stale). `--no-bed` or `--no-sfx`
+   leave a part out.
 4. **Plan.** `plan.md`: the one or two worlds the reel happens in, which scenes carry on in the same world, and for each
    scene its words, the real thing it shows and word -> what changes.
 5. **Scenes.** One component per scene in `scenes/`, mapped by id in `scenes/index.tsx`. Look at half-size stills
@@ -36,6 +40,24 @@ server in `mcp/` exposes each step as a tool.
 - **Story.** One chain of cause then effect, on objects already seen, that a stranger could retell from the pictures alone.
 - **Visual.** One change at a time, where the eye already is. What the voice names is centred and whole. No label over a
   number. Every new picture holds about 2 s before the camera leaves it.
+
+## Craft
+
+What separates a drawn reel from a generic one. Each rule is checked by eye on the stills, not by a script.
+
+- **No linear motion.** Every move eases (`ease.*`, `spline`); a straight `prog(..., (x) => x)` is for typing text only.
+- **Entrances move two or three things at once** (fade with a rise, a scale or a draw), and things that arrive
+  together are staggered 3 to 6 frames apart (`stagger`). Nothing pops in alone and flat.
+- **Exits are faster than entrances**, about half the time.
+- **One hero colour.** The accent (`theme.marker.color`) marks the one thing the voice names, at most one element a
+  frame; everything else stays in the reel's neutrals.
+- **Light and depth, not flat fills.** A soft pool of light behind the subject, a surface it stands on with a contact
+  shadow, gradients instead of single colours, a vignette on top. Grain, if any, is a fixed texture: grain that
+  changes every frame would hide a frozen picture from the stillness check.
+- **No blur filters on a canvas** (`ctx.filter = "blur(...)"`): they make a render about ten times slower. Fake soft
+  focus with radial gradients that fade to transparent.
+- **Draw icons, never emoji**: emoji render in their own colours and ignore the palette.
+- **Type**: weight 600 to 800 for anything that must be read, never under 32 px.
 
 ## caption.txt
 

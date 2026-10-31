@@ -1,0 +1,27 @@
+# The NG9-1-1 GIS data model (NENA-STA-006.3): the layers that route a 9-1-1 call and send help.
+== hook | ground: dark
+When you dial *nine-one-one,*
+a *map* decides who answers.
+Next generation nine-one-one
+sets out exactly
+how that map is *built.*
+== where | ground: dark
+Address *points*
+and road *centerlines*
+say where you are.
+Each stretch of *road*
+carries its house *numbers,*
+*left* side
+and *right.*
+== who | ground: dark
+Call center *boundaries*
+pick who *answers.*
+*Police,* fire and medical boundaries
+pick who *comes.*
+== join | ground: dark
+Every feature has
+its own unique *ID,*
+and every layer uses
+the same GPS *coordinates,*
+so neighboring *counties*
+join into one *map.*
